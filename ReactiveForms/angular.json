@@ -84,5 +84,8 @@
         }
       }
     }},
-  "defaultProject": "MeuProjeto"
+  "defaultProject": "MeuProjeto",
+  "cli": {
+    "analytics": "c9113f53-2146-4469-a228-eeed506530d3"
+  }
 }

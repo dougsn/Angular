@@ -34,7 +34,7 @@ export class CadastroComponent implements OnInit {
   }
 
   adicionarUsuario() {
-    if(this.cadastroForm.dirty && this.cadastroForm.valid) { // Para enviar/processar o formulario tem q estar valido e preenchido.
+    if(this.cadastroForm.dirty && this.cadastroForm.valid) { // Para enviar/processar o formulario tem q estar preencido e valido.
       this.usuario = Object.assign({}, this.usuario, this.cadastroForm.value); // Preenchedo o usuário com os dados do formulário, primeiro diz qual é o objeto que se espera retornar (this.usuario), depois a referencia a fonte da informação que vai popular (this.cadastroForm.value) -> com isso o usuário será populado com os dados do Formulário.
       console.log(this.usuario);
       this.formResult = JSON.stringify(this.cadastroForm.value);

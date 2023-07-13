@@ -9,7 +9,7 @@ import { APP_BASE_HREF } from '@angular/common';
 import { HomeComponent } from './pratica/reactiveForms/navegacao/home/home.component';
 import { FooterComponent } from './pratica/reactiveForms/navegacao/footer/footer.component';
 import { MenuComponent } from './pratica/reactiveForms/navegacao/menu/menu.component';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,7 +19,9 @@ import { MenuComponent } from './pratica/reactiveForms/navegacao/menu/menu.compo
     MenuComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule,  
+    FormsModule,
+    ReactiveFormsModule,
     [RouterModule.forRoot(rootRouterConfig, { useHash: false})]
   ],
   providers: [

@@ -13,6 +13,7 @@ import { NavegacaoModule } from './navegacao/navegacao.module';
 import { SobreComponent } from './institucional/sobre/sobre.component';
 import { AppRoutingModule } from './app.routes';
 
+
 @NgModule({
   declarations: [
     AppComponent,

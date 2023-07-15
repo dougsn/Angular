@@ -1,13 +1,16 @@
 <div class="container main-container">
+  <h1>Lista Produtos</h1>
+  <!-- Utilizando o component Filho para mostrar os produtos ativos -->
+  <produto-count [produtos]="produtos"></produto-count>
 
-    <h1>Lista Produtos</h1>
-    <!-- Utilizando o component Filho para mostrar os produtos ativos -->
-    <produto-count [produtos]="produtos"></produto-count>
-
-    <div class="row text-center">
-
-        <!-- Passando o valor do Produto para o component Filho. -->
-        <produto-card-detalhe class="col-md-4" *ngFor="let produto of produtos" [produto]="produto"></produto-card-detalhe>
-
-    </div>
+  <div class="row text-center">
+    <!-- Passando o valor do Produto para o component Filho. -->
+    <produto-card-detalhe
+      class="col-md-4"
+      *ngFor="let produto of produtos"
+      [produto]="produto"
+      (status)="mudarStatus($event)"        
+    ></produto-card-detalhe>
+    <!-- Utilizando o status que está sendo enviado pelo component Filho e ativando a função mudarStatus -->
+  </div>
 </div>

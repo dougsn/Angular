@@ -57,4 +57,8 @@ export class ProdutoDashboardComponent implements OnInit {
     }];
   }
 
+  mudarStatus(event: Produto){ // Se estiver ativo vai para inativo e vise-versa.
+    event.ativo = !event.ativo; // Aqui teria a comunicação com a API para inverter na base de dados e mudar o status.  
+  }
+
 }

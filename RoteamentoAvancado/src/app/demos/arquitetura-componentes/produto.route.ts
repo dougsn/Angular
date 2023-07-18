@@ -20,7 +20,7 @@ const produtoRouterConfig: Routes = [
                     teste: 'informacao'
                 }
             },
-            { path: 'editar/:id', component: EditarProdutoComponent }
+            { path: 'todos/editar/:id', component: EditarProdutoComponent }
         ] 
     }    
 ];

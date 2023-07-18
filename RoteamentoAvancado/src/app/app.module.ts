@@ -13,6 +13,7 @@ import { NavegacaoModule } from './navegacao/navegacao.module';
 
 import { AppRoutingModule } from './app.routes';
 import { AuthGuard } from './services/app.guard';
+import { CadastroGuard } from './services/cadastro.guard';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { AuthGuard } from './services/app.guard';
     AppRoutingModule
   ],
   providers: [
-    AuthGuard
+    AuthGuard,
+    CadastroGuard
   ],
   bootstrap: [AppComponent]
 })

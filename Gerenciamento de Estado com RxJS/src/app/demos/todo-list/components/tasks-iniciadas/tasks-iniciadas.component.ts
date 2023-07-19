@@ -9,11 +9,13 @@ import { TasksService } from '../../todo.service';
 })
 export class TasksIniciadasComponent implements OnInit {
 
-
+  iniciados$: Observable<any[]>;
 
   constructor(private tasksService: TasksService) {}
 
   ngOnInit() {
     
+    this.iniciados$ = this.tasksService.getTodoList$;
+
   }
 }

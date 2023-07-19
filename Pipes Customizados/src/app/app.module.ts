@@ -21,6 +21,7 @@ import { AuthGuard } from './services/app.guard';
 import { CadastroGuard } from './services/cadastro.guard';
 import { FilmesComponent } from './demos/pipes/filmes/filmes.component';
 import { FileSyzePipe } from './demos/pipes/filmes/filesiyze.pipe';
+import { ImageFormaterPipe } from './demos/pipes/filmes/image.pipe';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { FileSyzePipe } from './demos/pipes/filmes/filesiyze.pipe';
     SobreComponent,
     CadastroComponent,
     FilmesComponent,
-    FileSyzePipe
+    FileSyzePipe,
+    ImageFormaterPipe
   ],
   imports: [
     BrowserModule,

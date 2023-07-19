@@ -1,16 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { Filme } from './filme';
+import { ImageFormaterPipe } from './image.pipe';
 
 @Component({
   selector: 'app-filmes',
   templateUrl: './filmes.component.html',
-  styles: []
+  providers: [
+    ImageFormaterPipe
+  ]
 })
 export class FilmesComponent implements OnInit {
 
   filmes: Filme[];
+  mapper: Filme[];
 
-  constructor() { }
+  constructor(private imageFormate: ImageFormaterPipe) { }
 
   ngOnInit() {
 
@@ -26,7 +30,7 @@ export class FilmesComponent implements OnInit {
         nome: 'O Poderoso Chefão',
         dataLancamento: new Date('01/12/1972'),
         valor: 200.00,
-        imagem: 'poderofoChefao.jpg',
+        imagem: 'poderosoChefaoI.jpg',
         tamanho: '1342177280'
       },
       {
@@ -50,7 +54,17 @@ export class FilmesComponent implements OnInit {
         imagem: 'PulpFiction.jpg',
         tamanho: '774039680'
       },
-    ]
+    ];
+
+    this.mapper = this.filmes.map(filme => {
+      return {
+        nome: filme.nome,
+        dataLancamento: filme.dataLancamento,
+        valor: filme.valor,
+        tamanho: filme.tamanho,
+        imagem: this.imageFormate.transform(filme.imagem, 'default', true)
+      }
+    })
 
   }
 

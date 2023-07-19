@@ -28,3 +28,7 @@ export class BarServices {
         return 'Refeições';
     }
 }
+
+export abstract class BebidaService {
+    obterBebidas: () => string;
+}

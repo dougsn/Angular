@@ -10,10 +10,13 @@ import { TasksComponent } from './components/tasks/tasks.component';
 import { ToDoListComponent } from './components/todo-list/todo-list.component';
 import { TodoComponent } from './todo.component';
 
+import { ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
   imports: [
     CommonModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [
     TasksService,

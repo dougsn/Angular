@@ -1,3 +1,4 @@
+import { Store } from './todo.store';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
@@ -15,7 +16,8 @@ import { TodoComponent } from './todo.component';
     HttpClientModule
   ],
   providers: [
-    TasksService
+    TasksService,
+    Store
   ],
   declarations: [
     TodoComponent,

@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { Store } from './../../todo.store';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Observable, pipe, Subscription } from 'rxjs';
 
 import { TasksService } from '../../todo.service';
 
@@ -7,15 +9,26 @@ import { TasksService } from '../../todo.service';
   selector: 'tasks',
   templateUrl: './tasks.component.html'
 })
-export class TasksComponent implements OnInit {
+export class TasksComponent implements OnInit, OnDestroy {
 
   todolist$: Observable<any[]>
+  subscription: Subscription;
   
-  constructor(private taskService: TasksService) {}
+  constructor(private taskService: TasksService, private store: Store) { }
 
   ngOnInit() {  
 
-   this.todolist$ = this.taskService.getTodoList$;
+   this.todolist$ = this.store.getTodoList()
+   .pipe(
+    map(todolist => todolist.filter(task => !task.iniciado && !task.finalizado)));
+
+    // Teve que dar um subscribe aqui pois é necessário manter o fluxo de dados, o subscribe tem que ser iniciado em algum lugar.
+    this.subscription = this.taskService.getTodoList$.subscribe();
    
   }  
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe(); // Fechando a subscription
+  }
+
 }

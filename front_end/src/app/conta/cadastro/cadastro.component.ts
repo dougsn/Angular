@@ -7,6 +7,7 @@ import { DisplayMessage, GenericValidator, ValidationMessages } from 'src/app/ut
 
 import { Observable, fromEvent, merge } from 'rxjs';
 import { CustomValidators } from '@narik/custom-validators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cadastro',
@@ -24,7 +25,7 @@ export class CadastroComponent implements OnInit, AfterViewInit{
   genericValidator!: GenericValidator;
   displayMessage: DisplayMessage = {};
 
-  constructor(private fb: FormBuilder, private contaService: ContaService) {
+  constructor(private fb: FormBuilder, private contaService: ContaService, private router: Router) {
 
     this.validationMessages = {
       email: {
@@ -86,11 +87,16 @@ export class CadastroComponent implements OnInit, AfterViewInit{
   }
 
   processarSucesso(response: any){
+    this.cadastroForm.reset(); // Limpando Formulário
+    this.errors = []; // Zerando os erros.
 
+    this.contaService.LocalStorage.salvarDadosLocaisUsuario(response); // Salvando o usuario e seu token JWT no localStorage.
+
+    this.router.navigate(['/home']) // Depois que cadastrar é redirecionado para HOME
   }
 
   processarFalha(fail: any){
-
+    this.errors = fail.error.errors;
   }
 
 

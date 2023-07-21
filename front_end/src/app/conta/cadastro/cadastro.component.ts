@@ -77,8 +77,20 @@ export class CadastroComponent implements OnInit, AfterViewInit{
     if(this.cadastroForm.dirty && this.cadastroForm.valid) {
       this.usuario = Object.assign({}, this.usuario, this.cadastroForm.value); // Convertendo e montando o usuario com os valores do formulario
 
-      this.contaService.registrarUsuario(this.usuario);
+      this.contaService.registrarUsuario(this.usuario)
+        .subscribe( // Dando subscribe para mandar para o backend e tratando abaixo.
+          sucesso => {this.processarSucesso(sucesso)},
+          falha => {this.processarFalha(falha)}
+        );
     }
+  }
+
+  processarSucesso(response: any){
+
+  }
+
+  processarFalha(fail: any){
+
   }
 
 

@@ -9,6 +9,9 @@ import { LoginComponent } from './login/login.component';
 
 import { ContaRoutingModule } from './conta.routes';
 import { ContaAppComponent } from './conta.app.component';
+import { ContaService } from './services/conta.service';
+
+import { NarikCustomValidatorsModule } from '@narik/custom-validators';
 
 
 
@@ -24,7 +27,11 @@ import { ContaAppComponent } from './conta.app.component';
     ContaRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NarikCustomValidatorsModule
+  ],
+  providers: [
+    ContaService
   ]
 })
 export class ContaModule { }

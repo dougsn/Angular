@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavegacaoModule } from './navegacao/navegacao.module';
 import { ContaModule } from './conta/conta.module';
+import { FornecedorModule } from './fornecedor/fornecedor.module';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { ContaModule } from './conta/conta.module';
     NavegacaoModule,
     NgbModule,
     ContaModule,
+    FornecedorModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot()
   ],

@@ -17,6 +17,16 @@ export abstract class BaseService {
     };
   }
 
+  // Mandando o Header com o Token para validar se pode ou não fazer algo na aplicação.
+  protected ObterAuthHeaderJson() {
+    return {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${this.LocalStorage.obterTokenUsuario()}`
+      })
+    }
+  }
+
   protected extractData(response: any) {
     return response.data || {};
   }

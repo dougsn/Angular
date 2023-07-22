@@ -27,6 +27,8 @@ export class CadastroComponent implements OnInit, AfterViewInit{
   genericValidator!: GenericValidator;
   displayMessage: DisplayMessage = {};
 
+  mudancasNaoSalvar!: boolean; // Variavel para verificar se o usuario pode sair ou nao da rota.
+
   constructor(private fb: FormBuilder, private contaService: ContaService, private router: Router, private toastr: ToastrService) {
 
     this.validationMessages = {
@@ -72,6 +74,7 @@ export class CadastroComponent implements OnInit, AfterViewInit{
 
     merge(...controlBlurs).subscribe(() => {
       this.displayMessage = this.genericValidator.processarMensagens(this.cadastroForm);
+      this.mudancasNaoSalvar = true;
     })
 
   }
@@ -85,6 +88,8 @@ export class CadastroComponent implements OnInit, AfterViewInit{
           sucesso => {this.processarSucesso(sucesso)},
           falha => {this.processarFalha(falha)}
         );
+
+        this.mudancasNaoSalvar = false;
     }
   }
 

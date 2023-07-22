@@ -1,5 +1,12 @@
 @import '~ngx-toastr/toastr';
 
+.main-container {
+  padding: 25px 15px 15px 100px;
+  margin-right: auto;
+  margin-left: auto;
+  overflow: hidden;
+}
+
 a.navbar-brand {
   white-space: normal;
   text-align: center;

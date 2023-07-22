@@ -7,6 +7,8 @@ import { DisplayMessage, GenericValidator, ValidationMessages } from 'src/app/ut
 
 import { Observable, fromEvent, merge } from 'rxjs';
 import { CustomValidators } from '@narik/custom-validators';
+import { ToastrService } from 'ngx-toastr';
+
 import { Router } from '@angular/router';
 
 @Component({
@@ -25,7 +27,7 @@ export class CadastroComponent implements OnInit, AfterViewInit{
   genericValidator!: GenericValidator;
   displayMessage: DisplayMessage = {};
 
-  constructor(private fb: FormBuilder, private contaService: ContaService, private router: Router) {
+  constructor(private fb: FormBuilder, private contaService: ContaService, private router: Router, private toastr: ToastrService) {
 
     this.validationMessages = {
       email: {
@@ -92,11 +94,26 @@ export class CadastroComponent implements OnInit, AfterViewInit{
 
     this.contaService.LocalStorage.salvarDadosLocaisUsuario(response); // Salvando o usuario e seu token JWT no localStorage.
 
-    this.router.navigate(['/home']) // Depois que cadastrar é redirecionado para HOME
+    let toast = this.toastr.success("Registro realizado com sucesso!", "Bem vindo!!!", {
+      timeOut: 1500,
+      closeButton: true,
+      progressBar: true
+    });
+
+    if(toast) {
+      toast.onHidden.subscribe(() => { // Depois que o toastr sumir, redireciona para a home
+        this.router.navigate(['/home']) // Depois que cadastrar é redirecionado para HOME
+      });
+    }
   }
 
   processarFalha(fail: any){
     this.errors = fail.error.errors;
+    this.toastr.error("Ocorreu um erro!", "Opa :(", {
+      timeOut: 1500,
+      closeButton: true,
+      progressBar: true
+    });
   }
 
 

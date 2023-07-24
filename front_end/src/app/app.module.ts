@@ -12,6 +12,7 @@ import { NavegacaoModule } from './navegacao/navegacao.module';
 import { ContaModule } from './conta/conta.module';
 import { FornecedorModule } from './fornecedor/fornecedor.module';
 import { ErrorInterceptor } from './services/error.handler.service';
+import { ProdutoModule } from './produto/produto.module';
 
 export const httpInterceptorProviders = [
   { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
@@ -28,6 +29,7 @@ export const httpInterceptorProviders = [
     NgbModule,
     ContaModule,
     FornecedorModule,
+    ProdutoModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     HttpClientModule

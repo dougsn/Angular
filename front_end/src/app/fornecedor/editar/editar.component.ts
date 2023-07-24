@@ -72,10 +72,8 @@ export class EditarComponent implements OnInit {
 
     this.genericValidator = new GenericValidator(this.validationMessages);
 
-    const id = (route.params as Params)['id']
-
-    this.fornecedorService.obterPorId(id)
-      .subscribe(fornecedor => this.fornecedor = fornecedor);
+    this.fornecedor = this.route.snapshot.data['fornecedor']; // Populando os dados do fornecedor para popular o form
+    this.tipoFornecedor = this.fornecedor.tipoFornecedor;
   }
 
   ngOnInit() {
@@ -99,7 +97,33 @@ export class EditarComponent implements OnInit {
       estado: ['', [Validators.required]],
       fornecedorId: ''
     });
+
+    this.preencherForm();
   }
+
+  preencherForm() { // Função para popular os dados dos Inputs que estão no form
+
+    this.fornecedorForm.patchValue({
+      id: this.fornecedor.id,
+      nome: this.fornecedor.nome,
+      documento: this.fornecedor.documento,
+      ativo: this.fornecedor.ativo,
+      tipoFornecedor: this.fornecedor.tipoFornecedor.toString()
+    });
+
+    this.enderecoForm.patchValue({
+      id: this.fornecedor.endereco.id,
+      logradouro: this.fornecedor.endereco.logradouro,
+      numero: this.fornecedor.endereco.numero,
+      complemento: this.fornecedor.endereco.complemento,
+      bairro: this.fornecedor.endereco.bairro,
+      cep: this.fornecedor.endereco.cep,
+      cidade: this.fornecedor.endereco.cidade,
+      estado: this.fornecedor.endereco.estado
+    });
+  }
+
+
 
   ngAfterViewInit() {
     let controlBlurs: Observable<any>[] = this.formInputElements

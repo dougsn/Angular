@@ -19,9 +19,7 @@ export class ExcluirComponent {
     private router: Router,
     private toastr: ToastrService) {
 
-    const id = (route.params as Params)['id']
-    this.fornecedorService.obterPorId(id)
-      .subscribe(fornecedor => this.fornecedor = fornecedor);
+      this.fornecedor = this.route.snapshot.data['fornecedor']; // Populando os dados do fornecedor para popular o form
   }
 
   excluirEvento() {

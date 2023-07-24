@@ -12,6 +12,7 @@ import { ExcluirComponent } from './excluir/excluir.component';
 import { DetalhesComponent } from './detalhes/detalhes.component';
 import { FornecedorResolve } from './services/fornecedor.resolve';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { FornecedorGuard } from './services/fornecedor.guard';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
   ],
   providers: [
     FornecedorService,
-    FornecedorResolve
+    FornecedorResolve,
+    FornecedorGuard
   ]
 })
 export class FornecedorModule { }

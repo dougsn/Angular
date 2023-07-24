@@ -18,6 +18,7 @@ const fornecedorRouterConfig: Routes = [
             {
               path: 'adicionar-novo', component: NovoComponent,
               canActivate: [FornecedorGuard],
+              canDeactivate: [FornecedorGuard],
               data: [{ claim: { nome: 'Fornecedor', valor: 'Adicionar' } }] // Qual a role que a pessoa tem que ter
             },
             {
